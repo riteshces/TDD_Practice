@@ -31,11 +31,25 @@ namespace TDDPracticeTests.RomanNumbers
         public void Return_Roman_Numericals_When_Pass_Number(int number, string romanNumber)
         {
             //Act
-            string result = new NumberConverter().ConvertToRomanNumber(number);
+            string result = NumberConverter.ConvertToRomanNumber(number);
 
             //Assert
             result.Should().NotBeNullOrEmpty();
             result.Should().BeEquivalentTo(romanNumber);
         }
+
+
+        [Theory]
+        [InlineData(0, "Number must no be zero.")]
+        [InlineData(-1, "Number must no be negative.")]
+        public void Throw_Error_When_Convert_Zero_To_Roman_Numericals(int number, string expectedMessage)
+        {
+            //Act
+            Action result = () => NumberConverter.ConvertToRomanNumber(number);
+
+            //Assert
+            result.Should().Throw<ArgumentException>().WithMessage(expectedMessage);
+        }
+
     }
 }

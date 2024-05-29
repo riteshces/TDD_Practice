@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TDDPracticeTests.RomanNumbers
 {
-    public class NumberConverter
+    public static class NumberConverter
     {
-        public readonly Dictionary<int, string> NumberRoman = new Dictionary<int, string>
+        static readonly Dictionary<int, string> NumberRoman = new Dictionary<int, string>
         {
             {1000,"M" },
             {900,"CM" },
@@ -23,8 +23,19 @@ namespace TDDPracticeTests.RomanNumbers
             {4,"IV" },
             {1,"I" },
         };
-        public string ConvertToRomanNumber(int number)
+        public static string ConvertToRomanNumber(int number)
         {
+            #region Validation
+            if (number == 0)
+            {
+                throw new ArgumentException("Number must no be zero.");
+            }
+            else if (number < 0)
+            {
+                throw new ArgumentException("Number must no be negative.");
+            } 
+            #endregion
+
             string roman = "";
 
             foreach (var keyvalue in NumberRoman)
