@@ -5,29 +5,7 @@ namespace TDDPracticeTests.RomanNumbers
     public class RomanNumberConverterTest
     {
         [Theory]
-        [InlineData(1, "I")]
-        [InlineData(2, "II")]
-        [InlineData(3, "III")]
-        [InlineData(4, "IV")]
-        [InlineData(5, "V")]
-        [InlineData(6, "VI")]
-        [InlineData(7, "VII")]
-        [InlineData(8, "VIII")]
-        [InlineData(9, "IX")]
-        [InlineData(10, "X")]
-        [InlineData(12, "XII")]
-        [InlineData(21, "XXI")]
-        [InlineData(25, "XXV")]
-        [InlineData(28, "XXVIII")]
-        [InlineData(40, "XL")]
-        [InlineData(49, "XLIX")]
-        [InlineData(50, "L")]
-        [InlineData(100, "C")]
-        [InlineData(500, "D")]
-        [InlineData(819, "DCCCXIX")]
-        [InlineData(857, "DCCCLVII")]
-        [InlineData(900, "CM")]
-        [InlineData(1000, "M")]
+        [MemberData(nameof(TestData))]
         public void Return_Roman_Numericals_When_Pass_Number(int number, string romanNumber)
         {
             //Act
@@ -37,6 +15,35 @@ namespace TDDPracticeTests.RomanNumbers
             result.Should().NotBeNullOrEmpty();
             result.Should().BeEquivalentTo(romanNumber);
         }
+
+
+        public static readonly IEnumerable<object[]> TestData = new[]
+{
+    new object[] { 1, "I" },
+    new object[] { 2, "II" },
+    new object[] { 3, "III" },
+    new object[] { 4, "IV" },
+    new object[] { 5, "V" },
+    new object[] { 6, "VI" },
+    new object[] { 7, "VII" },
+    new object[] { 8, "VIII" },
+    new object[] { 9, "IX" },
+    new object[] { 10, "X" },
+    new object[] { 12, "XII" },
+    new object[] { 21, "XXI" },
+    new object[] { 25, "XXV" },
+    new object[] { 28, "XXVIII" },
+    new object[] { 40, "XL" },
+    new object[] { 49, "XLIX" },
+    new object[] { 50, "L" },
+    new object[] { 100, "C" },
+    new object[] { 500, "D" },
+    new object[] { 819, "DCCCXIX" },
+    new object[] { 857, "DCCCLVII" },
+    new object[] { 900, "CM" },
+    new object[] { 1000, "M" }
+};
+
 
 
         [Theory]

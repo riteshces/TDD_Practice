@@ -5,13 +5,13 @@
         public static int Add(string numbers)
         {
             int result = 0;
-            string delimiter = "," , negativeNumbers="";
+            string delimiter = ",";
+            string negativeNumbers = "";
 
-            if(string.IsNullOrEmpty(numbers))
+            if (string.IsNullOrEmpty(numbers))
             {
                 throw new ArgumentNullException("Numbers must not be empty.");
             }
-            
 
             if (numbers.StartsWith("//"))
             {
@@ -20,28 +20,29 @@
                 numbers = numbers.Replace("//" + delimiter + "\n", "");
             }
 
-            if (numbers.Contains(delimiter+"\n"))
+            if (numbers.Contains(delimiter + "\n"))
             {
                 throw new ArgumentException("Wrong input.");
             }
             else
             {
-                numbers.Replace("\n", delimiter);
+                numbers = numbers.Replace("\n", "");
             }
 
             var inputNumbers = numbers.Split(delimiter);
+
             foreach (var inputNumber in inputNumbers)
             {
-                if(Convert.ToInt32(inputNumber) <0)
+                if (Convert.ToInt32(inputNumber) < 0)
                 {
                     negativeNumbers += inputNumber;
                 }
                 result += Convert.ToInt32(inputNumber);
             }
 
-            if(negativeNumbers.Length>0)
+            if (negativeNumbers.Length > 0)
             {
-                throw new ArgumentException("Negatives not allowed ("+negativeNumbers+")");
+                throw new ArgumentException("Negatives not allowed (" + negativeNumbers + ")");
             }
             return result;
         }

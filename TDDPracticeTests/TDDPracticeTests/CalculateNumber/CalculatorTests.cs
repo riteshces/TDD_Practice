@@ -6,12 +6,6 @@ namespace TestCasesProject.CalculatorCaseStudy
 
     public class CalculatorTests : IDisposable
     {
-        private readonly ITestOutputHelper _output;
-        public CalculatorTests(ITestOutputHelper output)
-        {
-            _output = output;
-        }
-
 
         //dispose all running instances
         public void Dispose()
@@ -26,8 +20,9 @@ namespace TestCasesProject.CalculatorCaseStudy
             int result = Calculator.Add(numbers);
 
             //Assert
-            _output.WriteLine("Return sum of number is executed successfully.");
-            result.Should().NotBe(0).And.BePositive().And.Be(expectedResult, "because they have same values");
+            result.Should().NotBe(0);
+            result.Should().BePositive();
+            result.Should().Be(expectedResult);
         }
 
         public static IEnumerable<object[]> TestData => new[]
@@ -41,10 +36,12 @@ namespace TestCasesProject.CalculatorCaseStudy
             new object[]{"//~;\n1~;2~;3", 6}
         };
 
-        [Theory]
-        [InlineData("1,\n2")]
-        public void Return_Exception_If_Numbers_Have_Comma_With_New_Line(string numbers)
+        [Fact]
+        public void Return_Exception_If_Numbers_Have_Comma_With_New_Line()
         {
+            //arrange
+            string numbers = "1,\n2";
+
             //Act
             Action action = () => Calculator.Add(numbers);
 
@@ -53,10 +50,13 @@ namespace TestCasesProject.CalculatorCaseStudy
         }
 
 
-        [Theory]
-        [InlineData("-1,2", "-1")]
-        public void Return_Exception_If_Numbers_Contains_Negative_Number(string numbers, string expectedNegativeNumbers)
+        [Fact]
+        public void Return_Exception_If_Numbers_Contains_Negative_Number()
         {
+            //Arrange
+            string numbers = "-1,2";
+            string expectedNegativeNumbers = "-1";
+
             //Act
             Action action = () => Calculator.Add(numbers);
 
