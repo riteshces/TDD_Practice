@@ -6,7 +6,6 @@ namespace TestCasesProject.CalculatorCaseStudy
 
     public class CalculatorTests : IDisposable
     {
-
         //dispose all running instances
         public void Dispose()
         {
@@ -48,7 +47,6 @@ namespace TestCasesProject.CalculatorCaseStudy
             //Assert
             action.Should().ThrowExactly<ArgumentException>().WithMessage("Wrong input.");
         }
-
 
         [Fact]
         public void Return_Exception_If_Numbers_Contains_Negative_Number()
