@@ -59,7 +59,7 @@ namespace TestCasesProject.CalculatorCaseStudy
             Action action = () => Calculator.Add(numbers);
 
             //Assert
-            action.Should().ThrowExactly<ArgumentException>().WithMessage("Negatives not allowed (" + expectedNegativeNumbers + ")");
+            action.Should().ThrowExactly<ArgumentException>().WithMessage($"Negatives not allowed {expectedNegativeNumbers}");
         }
 
         [Fact]
