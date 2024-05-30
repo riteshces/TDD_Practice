@@ -4,7 +4,7 @@ using Xunit.Abstractions;
 namespace TestCasesProject.CalculatorCaseStudy
 {
 
-    public class CalculatorTests 
+    public class CalculatorTests : IDisposable
     {
         private readonly ITestOutputHelper _output;
         public CalculatorTests(ITestOutputHelper output)
@@ -14,9 +14,9 @@ namespace TestCasesProject.CalculatorCaseStudy
 
 
         //dispose all running instances
-        //public void Dispose()
-        //{
-        //}
+        public void Dispose()
+        {
+        }
 
         [Theory]
         [MemberData(nameof(TestData))]
