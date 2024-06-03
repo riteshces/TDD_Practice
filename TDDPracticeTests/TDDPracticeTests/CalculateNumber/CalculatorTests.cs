@@ -13,7 +13,7 @@ namespace TestCasesProject.CalculatorCaseStudy
 
         [Theory]
         [MemberData(nameof(TestData))]
-        public void Return_Sum_Of_Numbers(string numbers, int expectedResult)
+        public void Add_Should_Calculate_Sum_Of_Numbers_Correctly(string numbers, int expectedResult)
         {
             //Act
             int result = Calculator.Add(numbers);
@@ -36,7 +36,7 @@ namespace TestCasesProject.CalculatorCaseStudy
         };
 
         [Fact]
-        public void Return_Exception_If_Numbers_Have_Comma_With_New_Line()
+        public void Add_Should_Throw_Exception_If_Numbers_Have_Comma_With_New_Line()
         {
             //arrange
             string numbers = "1,\n2";
@@ -49,7 +49,7 @@ namespace TestCasesProject.CalculatorCaseStudy
         }
 
         [Fact]
-        public void Return_Exception_If_Numbers_Contains_Negative_Number()
+        public void Add_Should_Throw_Exception_If_Numbers_Contains_Negative_Number()
         {
             //Arrange
             string numbers = "-1,2";
@@ -63,7 +63,7 @@ namespace TestCasesProject.CalculatorCaseStudy
         }
 
         [Fact]
-        public void Return_Null_Argument_Exception_When_Numbers_Should_Null()
+        public void Add_Should_Throw_Null_Argument_Exception_If_Numbers_Null()
         {
             //Act
             Action action = () => Calculator.Add(null);

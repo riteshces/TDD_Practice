@@ -6,7 +6,7 @@ namespace TDDPracticeTests.RomanNumbers
     {
         [Theory]
         [MemberData(nameof(TestData))]
-        public void Return_Roman_Numericals_When_Pass_Number(int number, string romanNumber)
+        public void ConvertToRomanNumber_Should_Return_Roman_Numericals_When_Pass_Number(int number, string romanNumber)
         {
             //Act
             string result = NumberConverter.ConvertToRomanNumber(number);
@@ -49,7 +49,7 @@ namespace TDDPracticeTests.RomanNumbers
         [Theory]
         [InlineData(0, "Number must no be zero.")]
         [InlineData(-1, "Number must no be negative.")]
-        public void Throw_Error_When_Convert_Zero_To_Roman_Numericals(int number, string expectedMessage)
+        public void ConvertToRomanNumber_Should_Throw_Error_When_Convert_Zero_To_Roman_Numericals(int number, string expectedMessage)
         {
             //Act
             Action result = () => NumberConverter.ConvertToRomanNumber(number);
